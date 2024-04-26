@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .form-check {
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>員工查詢</h2>
+        <form th:action="@{/query/fideallemp}" method="get">
+            <div class="form-group">
+                <label for="ename">員工名稱：:</label>
+                <input type="text" class="form-control" name="ename" placeholder="輸入員工名稱" />
+            </div>
+            <div class="form-group">
+                <label for="sal">員工薪水大於:</label>
+                <input type="text" class="form-control" name="sal" placeholder="輸入員工薪水" />
+            </div>
+            <button type="submit" class="btn btn-primary">查詢</button>
+        </form>
+        <hr>
+        <h2>部門查詢</h2>
+        <form th:action="@{/query/finddept}" method="get">
+            <div class="form-group">
+                <label for="dname">部門名稱:</label>
+                <select class="form-control" name="dname">
+                    <option value="" disabled selected>請選擇部門</option>
+                    <option th:value="${dept.dname}" th:each="dept:${list}" th:text="${dept.dname}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">查詢</button>
+        </form>
+    </div>
+</body>
+
+</html>
+<!-- </head>
+
+<body>
+    <h2>員工查詢表單</h2>
+    <form th:action="@{/query/fideallemp}" method="get">
+        <label for="ename">員工名稱：</label>
+        <input type="text" name="ename" placeholder="輸入員工名稱" />
+        <label for="ename">員工薪水大於:</label>
+        <input type="text" name="sal" placeholder="輸入員工薪水" />
+        <input type="submit" value="查詢" />
+    </form>
+
+    <h1>hello</h1> -->
+    <!-- <h2>部門員工查詢</h2>
+    <form th:action="@{/query/finddept}" method="get">
+        <select name="dname">
+            <option value="" disabled selected>請選擇部門</option>
+            <option th:value="${dept.dname}" th:each="dept:${list}" th:text="${dept.dname}"></option>
+        </select>
+        <input type="submit" value="查詢" />
+    </form>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+        <label class="form-check-label" for="flexCheckIndeterminate">
+            Indeterminate checkbox
+        </label>
+    </div>
+
+
+</body> -->
